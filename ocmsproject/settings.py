@@ -4,7 +4,7 @@ Django settings for ocmsproject project.
 
 from pathlib import Path
 import os
-import dj_database_url  # For Render PostgreSQL
+import dj_database_url  # type: ignore
 
 # -----------------------------------------------------------
 # BASE DIR
@@ -81,9 +81,12 @@ WSGI_APPLICATION = 'ocmsproject.wsgi.application'
 # -----------------------------------------------------------
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL"),
+        default=os.environ.get(
+            "DATABASE_URL",
+            "postgresql://postgres:postgres@localhost:5432/ocmsproject",
+        ),
         conn_max_age=600,
-        ssl_require=True,
+        ssl_require=os.environ.get("DJANGO_DB_SSL", "False").lower() == "true",
     )
 }
 
