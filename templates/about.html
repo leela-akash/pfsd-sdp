@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h1 class="card-title text-center">About OCEMS</h1>
+    </div>
+    <div>
+        <p style="font-size: 18px; margin-bottom: 30px; text-align: center;">
+            Online Curriculum Enrollment and Management System
+        </p>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <h3 style="color: var(--primary-color); margin-bottom: 15px;">System Overview</h3>
+                <p>OCEMS is a comprehensive web-based platform designed to streamline academic curriculum management, student enrollment, and course administration for educational institutions.</p>
+            </div>
+            <div class="col-md-6">
+                <h3 style="color: var(--primary-color); margin-bottom: 15px;">Key Objectives</h3>
+                <ul style="line-height: 2;">
+                    <li>Efficient course management</li>
+                    <li>Simplified student enrollment</li>
+                    <li>Enhanced instructor workflow</li>
+                    <li>Comprehensive admin control</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px;">
+            <h3 style="color: var(--primary-color); margin-bottom: 20px;">System Roles</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <h4>👨‍💼 Admin</h4>
+                        <p>Manage students, instructors, courses, and system settings</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <h4>👨‍🎓 Student</h4>
+                        <p>Enroll in courses, view grades, and track academic progress</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <h4>👨‍🏫 Instructor</h4>
+                        <p>Manage assigned courses, track student enrollment and grades</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="{% url 'login' %}" class="btn btn-primary">Get Started</a>
+            <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

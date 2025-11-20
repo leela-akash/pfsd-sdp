@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Create New Course</h2>
+        <p style="margin: 0;">Instructor: {{ instructor.fullname }} (ID: {{ instructor.instructorid }})</p>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Department *</label>
+                    <input type="text" name="department" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Academic Year *</label>
+                    <input type="text" name="academicyear" class="form-control" placeholder="2024-2025" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Semester *</label>
+                    <input type="text" name="semester" class="form-control" placeholder="Fall/Spring" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Year *</label>
+                    <input type="number" name="year" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Course Code *</label>
+                    <input type="text" name="coursecode" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Course Title *</label>
+                    <input type="text" name="coursetitle" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Credits</label>
+                    <input type="number" name="credits" class="form-control" value="3">
+                </div>
+            </div>
+        </div>
+        <div class="action-buttons">
+            <button type="submit" class="btn btn-primary">Create Course</button>
+            <a href="{% url 'instructorcourses' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

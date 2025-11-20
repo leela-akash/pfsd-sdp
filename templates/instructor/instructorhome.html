@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 style="color: var(--primary-color); margin-bottom: 30px;">Instructor Dashboard</h1>
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-icon">📚</div>
+<div class="stat-value">{{ courses_count }}</div>
+<div class="stat-label">Assigned Courses</div></div>
+<div class="stat-card"><div class="stat-icon">👤</div>
+<div class="stat-value">{{ instructor.instructorid }}</div>
+<div class="stat-label">Instructor ID</div></div>
+<div class="stat-card"><div class="stat-icon">🎓</div>
+<div class="stat-value">{{ instructor.qualification }}</div>
+<div class="stat-label">Qualification</div></div>
+<div class="stat-card"><div class="stat-icon">💼</div>
+<div class="stat-value">{{ instructor.designation }}</div>
+<div class="stat-label">Designation</div></div>
+</div>
+<div class="card">
+<div class="card-header"><h3 class="card-title">My Courses</h3></div>
+<div style="padding: 20px;">
+<a href="{% url 'instructorcourses' %}" class="btn btn-primary" style="margin-right: 10px;">View All My Courses</a>
+<a href="{% url 'instructoraddcourse' %}" class="btn btn-secondary">Add New Course</a>
+</div></div>{% endblock %}

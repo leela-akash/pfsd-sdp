@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-card card">
+        <div class="login-header">
+            <h2>Welcome Back!</h2>
+            <p>Login to your account</p>
+        </div>
+        
+        <ul class="nav-tabs" id="loginTabs">
+            <li><button class="nav-tab active" onclick="switchTab('admin')">Admin</button></li>
+            <li><button class="nav-tab" onclick="switchTab('student')">Student</button></li>
+            <li><button class="nav-tab" onclick="switchTab('instructor')">Instructor</button></li>
+        </ul>
+        
+        <!-- Admin Login Form -->
+        <div id="adminLogin" class="tab-content">
+            <form method="post" action="{% url 'adminlogincheck' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login as Admin</button>
+            </form>
+        </div>
+        
+        <!-- Student Login Form -->
+        <div id="studentLogin" class="tab-content" style="display: none;">
+            <form method="post" action="{% url 'studentlogincheck' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="form-label">Student ID</label>
+                    <input type="text" name="studentid" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login as Student</button>
+            </form>
+        </div>
+        
+        <!-- Instructor Login Form -->
+        <div id="instructorLogin" class="tab-content" style="display: none;">
+            <form method="post" action="{% url 'instructorlogincheck' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="form-label">Instructor ID</label>
+                    <input type="text" name="instructorid" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login as Instructor</button>
+            </form>
+        </div>
+        
+        <div class="text-center" style="margin-top: 20px;">
+            <a href="{% url 'home' %}" style="color: var(--primary-color);">← Back to Home</a>
+        </div>
+    </div>
+</div>
+
+<script>
+function switchTab(tab) {
+    // Hide all tab contents
+    document.getElementById('adminLogin').style.display = 'none';
+    document.getElementById('studentLogin').style.display = 'none';
+    document.getElementById('instructorLogin').style.display = 'none';
+    
+    // Remove active class from all tabs
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    
+    // Show selected tab content and add active class
+    if (tab === 'admin') {
+        document.getElementById('adminLogin').style.display = 'block';
+        document.querySelectorAll('.nav-tab')[0].classList.add('active');
+    } else if (tab === 'student') {
+        document.getElementById('studentLogin').style.display = 'block';
+        document.querySelectorAll('.nav-tab')[1].classList.add('active');
+    } else if (tab === 'instructor') {
+        document.getElementById('instructorLogin').style.display = 'block';
+        document.querySelectorAll('.nav-tab')[2].classList.add('active');
+    }
+}
+</script>
+{% endblock %}
+

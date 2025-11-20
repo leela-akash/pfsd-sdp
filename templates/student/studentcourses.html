@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card"><div class="card-header"><h2 class="card-title">My Enrolled Courses</h2></div>
+<div style="margin-bottom: 20px;">
+<a href="{% url 'availablecourses' %}" class="btn btn-primary">Browse More Courses</a>
+</div>
+{% if enrollments %}
+<div class="table-container"><table>
+<thead><tr><th>Course Code</th><th>Course Title</th><th>Department</th><th>Enrollment Date</th><th>Grade</th></tr></thead>
+<tbody>{% for enrollment in enrollments %}
+<tr><td>{{ enrollment.course.coursecode }}</td><td>{{ enrollment.course.coursetitle }}</td>
+<td>{{ enrollment.course.department }}</td><td>{{ enrollment.enrollment_date|date:"Y-m-d" }}</td>
+<td>{{ enrollment.grade|default:"Not Graded" }}</td></tr>
+{% endfor %}</tbody></table></div>
+{% else %}
+<div class="empty-state"><div class="empty-state-text">You haven't enrolled in any courses yet</div></div>
+{% endif %}
+</div>{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h2 class="card-title">My Courses</h2>
+        <a href="{% url 'instructoraddcourse' %}" class="btn btn-primary">Add Course</a>
+    </div>
+{% if course_details %}
+{% for item in course_details %}
+<div class="card" style="margin-bottom: 20px;">
+<div style="padding: 20px;">
+<h3>{{ item.course.coursecode }} - {{ item.course.coursetitle }}</h3>
+<p><strong>Department:</strong> {{ item.course.department }} | <strong>Semester:</strong> {{ item.course.semester }}</p>
+<p><strong>Enrolled Students:</strong> {{ item.enrollment_count }}</p>
+{% if item.enrollments %}
+<h4>Enrolled Students:</h4>
+<div class="table-container"><table>
+<thead><tr><th>Student Name</th><th>Student ID</th><th>Enrollment Date</th><th>Grade</th></tr></thead>
+<tbody>{% for enrollment in item.enrollments %}
+<tr><td>{{ enrollment.student.fullname }}</td><td>{{ enrollment.student.studentid }}</td>
+<td>{{ enrollment.enrollment_date|date:"Y-m-d" }}</td><td>{{ enrollment.grade|default:"Not Graded" }}</td></tr>
+{% endfor %}</tbody></table></div>
+{% endif %}
+</div></div>
+{% endfor %}
+{% else %}
+<div class="empty-state"><div class="empty-state-text">No courses assigned</div></div>
+{% endif %}
+</div>{% endblock %}

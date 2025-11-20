@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card"><div class="card-header"><h2 class="card-title">All Enrollments</h2></div>
+<div class="table-container"><table>
+<thead><tr><th>Student</th><th>Course</th><th>Enrollment Date</th><th>Grade</th></tr></thead>
+<tbody>{% for enrollment in enrollments %}
+<tr><td>{{ enrollment.student.fullname }} ({{ enrollment.student.studentid }})</td>
+<td>{{ enrollment.course.coursecode }} - {{ enrollment.course.coursetitle }}</td>
+<td>{{ enrollment.enrollment_date|date:"Y-m-d" }}</td><td>{{ enrollment.grade|default:"N/A" }}</td></tr>
+{% empty %}<tr><td colspan="4" class="empty-state">No enrollments found</td></tr>
+{% endfor %}</tbody></table></div></div>{% endblock %}

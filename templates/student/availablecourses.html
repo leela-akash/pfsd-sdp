@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card"><div class="card-header"><h2 class="card-title">Available Courses</h2></div>
+{% if courses %}
+<div class="row">{% for course in courses %}
+<div class="col-md-6">
+<div class="card" style="margin-bottom: 20px;">
+<div style="padding: 20px;">
+<h3>{{ course.coursetitle }}</h3>
+<p><strong>Code:</strong> {{ course.coursecode }}</p>
+<p><strong>Department:</strong> {{ course.department }}</p>
+<p><strong>Semester:</strong> {{ course.semester }}</p>
+<p><strong>Credits:</strong> {{ course.credits }}</p>
+<a href="{% url 'enrollcourse' course.id %}" class="btn btn-primary">Enroll Now</a>
+</div></div></div>
+{% endfor %}</div>
+{% else %}
+<div class="empty-state"><div class="empty-state-text">No available courses</div></div>
+{% endif %}
+</div>{% endblock %}
