@@ -4,16 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Online Curriculum Enrollment and Management System{% endblock %}</title>
+
+    <title>
+        {% block title %}OCEMS — Online Curriculum Enrollment & Management{% endblock %}
+    </title>
+
+    <!-- Premium Modern Stylesheet -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
+
 <body>
+
     {% if not hide_navbar %}
-    <nav class="navbar">
-        <div class="nav-content">
-            <a href="{% url 'home' %}" class="logo">📚 OCEMS</a>
-            <ul class="nav-links">
+    <!-- 🌟 GLASSMORPHIC NAVBAR -->
+    <nav class="navbar" style="margin: 15px auto; width: 96%; border-radius: var(--r-lg);">
+        <div class="nav-content" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+
+            <!-- Logo -->
+            <a class="brand" href="{% url 'home' %}">
+                <span class="logo-mark">OC</span>
+                OCEMS
+            </a>
+
+            <!-- Links -->
+            <ul class="nav-links" style="display: flex; gap: 14px; list-style: none; margin: 0;">
+
                 {% if request.session.role == 'admin' %}
                     <li><a href="{% url 'adminhome' %}">Dashboard</a></li>
                     <li><a href="{% url 'addstudent' %}">Students</a></li>
@@ -21,42 +37,48 @@
                     <li><a href="{% url 'addcourse' %}">Courses</a></li>
                     <li><a href="{% url 'allstudents' %}">View All</a></li>
                     <li><a href="{% url 'adminlogout' %}">Logout</a></li>
+
                 {% elif request.session.role == 'student' %}
                     <li><a href="{% url 'studenthome' %}">Dashboard</a></li>
                     <li><a href="{% url 'studentcourses' %}">My Courses</a></li>
                     <li><a href="{% url 'availablecourses' %}">Available Courses</a></li>
                     <li><a href="{% url 'studentlogout' %}">Logout</a></li>
+
                 {% elif request.session.role == 'instructor' %}
                     <li><a href="{% url 'instructorhome' %}">Dashboard</a></li>
                     <li><a href="{% url 'instructorcourses' %}">My Courses</a></li>
                     <li><a href="{% url 'instructorlogout' %}">Logout</a></li>
+
                 {% else %}
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'login' %}">Login</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                 {% endif %}
+
             </ul>
         </div>
     </nav>
     {% endif %}
-    
-    <div class="container">
+
+    <!-- Page Container -->
+    <main class="container fade-in">
         {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-{{ message.tags }} fade-in">
+                <div class="alert alert-{{ message.tags }} fade-in" style="margin-bottom: 20px;">
                     {{ message }}
                 </div>
             {% endfor %}
         {% endif %}
-        
+
         {% block content %}{% endblock %}
-    </div>
-    
+    </main>
+
+    <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Online Curriculum Enrollment and Management System. All rights reserved.</p>
+        <p>&copy; 2025 OCEMS — All Rights Reserved</p>
     </footer>
-    
+
     {% block extra_js %}{% endblock %}
 </body>
 </html>

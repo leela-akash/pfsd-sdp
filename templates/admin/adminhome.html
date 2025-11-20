@@ -1,79 +1,81 @@
 {% extends 'base.html' %}
-
 {% block content %}
+
 <div class="fade-in">
-    <h1 style="color: var(--primary-color); margin-bottom: 30px;">Admin Dashboard</h1>
-    
+
+    <h1 style="color: var(--primary); margin-bottom: 30px;">Admin Dashboard</h1>
+
     <div class="stats-grid">
+
         <div class="stat-card">
             <div class="stat-icon">👨‍🎓</div>
             <div class="stat-value">{{ total_students }}</div>
             <div class="stat-label">Total Students</div>
         </div>
+
         <div class="stat-card">
             <div class="stat-icon">👨‍🏫</div>
             <div class="stat-value">{{ total_instructors }}</div>
             <div class="stat-label">Total Instructors</div>
         </div>
+
         <div class="stat-card">
             <div class="stat-icon">📚</div>
             <div class="stat-value">{{ total_courses }}</div>
             <div class="stat-label">Total Courses</div>
         </div>
+
         <div class="stat-card">
             <div class="stat-icon">📋</div>
             <div class="stat-value">{{ total_enrollments }}</div>
             <div class="stat-label">Total Enrollments</div>
         </div>
+
     </div>
-    
+
     <div class="row">
+
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Quick Actions - Students</h3>
-                </div>
+                <div class="card-header"><h3 class="card-title">Quick Actions - Students</h3></div>
                 <div style="padding: 20px;">
-                    <a href="{% url 'addstudent' %}" class="btn btn-primary" style="width: 100%; margin-bottom: 10px;">Add New Student</a>
-                    <a href="{% url 'allstudents' %}" class="btn btn-secondary" style="width: 100%;">View All Students</a>
+                    <a href="{% url 'addstudent' %}" class="btn btn-primary d-block" style="margin-bottom: 10px;">Add New Student</a>
+                    <a href="{% url 'allstudents' %}" class="btn btn-ghost d-block">View All Students</a>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Quick Actions - Instructors</h3>
-                </div>
+                <div class="card-header"><h3 class="card-title">Quick Actions - Instructors</h3></div>
                 <div style="padding: 20px;">
-                    <a href="{% url 'addinstructor' %}" class="btn btn-primary" style="width: 100%; margin-bottom: 10px;">Add New Instructor</a>
-                    <a href="{% url 'allinstructors' %}" class="btn btn-secondary" style="width: 100%;">View All Instructors</a>
+                    <a href="{% url 'addinstructor' %}" class="btn btn-primary d-block" style="margin-bottom: 10px;">Add New Instructor</a>
+                    <a href="{% url 'allinstructors' %}" class="btn btn-ghost d-block">View All Instructors</a>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Quick Actions - Courses</h3>
-                </div>
+                <div class="card-header"><h3 class="card-title">Quick Actions - Courses</h3></div>
                 <div style="padding: 20px;">
-                    <a href="{% url 'addcourse' %}" class="btn btn-primary" style="width: 100%; margin-bottom: 10px;">Add New Course</a>
-                    <a href="{% url 'allcourses' %}" class="btn btn-secondary" style="width: 100%;">View All Courses</a>
+                    <a href="{% url 'addcourse' %}" class="btn btn-primary d-block" style="margin-bottom: 10px;">Add New Course</a>
+                    <a href="{% url 'allcourses' %}" class="btn btn-ghost d-block">View All Courses</a>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Quick Actions - Enrollments</h3>
-                </div>
+                <div class="card-header"><h3 class="card-title">Quick Actions - Enrollments</h3></div>
                 <div style="padding: 20px;">
-                    <a href="{% url 'viewenrollments' %}" class="btn btn-primary" style="width: 100%;">View All Enrollments</a>
+                    <a href="{% url 'viewenrollments' %}" class="btn btn-primary d-block">View All Enrollments</a>
                 </div>
             </div>
         </div>
+
     </div>
+
 </div>
+
 {% endblock %}

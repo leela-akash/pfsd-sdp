@@ -1,76 +1,93 @@
 {% extends 'base.html' %}
-
 {% block content %}
+
 <div class="card">
+
     <div class="card-header">
         <h2 class="card-title">Edit Student</h2>
     </div>
+
     <form method="post">
         {% csrf_token %}
+
         <div class="row">
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Student ID *</label>
-                    <input type="number" name="studentid" class="form-control" value="{{ student.studentid }}" required>
+                    <input type="number" name="studentid" class="input" value="{{ student.studentid }}" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Full Name *</label>
-                    <input type="text" name="fullname" class="form-control" value="{{ student.fullname }}" required>
+                    <input type="text" name="fullname" class="input" value="{{ student.fullname }}" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Gender *</label>
-                    <select name="gender" class="form-control" required>
+                    <select name="gender" class="input" required>
                         <option value="Male" {% if student.gender == 'Male' %}selected{% endif %}>Male</option>
                         <option value="Female" {% if student.gender == 'Female' %}selected{% endif %}>Female</option>
                         <option value="Other" {% if student.gender == 'Other' %}selected{% endif %}>Other</option>
                     </select>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Department *</label>
-                    <input type="text" name="department" class="form-control" value="{{ student.department }}" required>
+                    <input type="text" name="department" class="input" value="{{ student.department }}" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Program *</label>
-                    <input type="text" name="program" class="form-control" value="{{ student.program }}" required>
+                    <input type="text" name="program" class="input" value="{{ student.program }}" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Semester *</label>
-                    <input type="text" name="semester" class="form-control" value="{{ student.semester }}" required>
+                    <input type="text" name="semester" class="input" value="{{ student.semester }}" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Year *</label>
-                    <input type="number" name="year" class="form-control" value="{{ student.year }}" required>
+                    <input type="number" name="year" class="input" value="{{ student.year }}" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Email *</label>
-                    <input type="email" name="email" class="form-control" value="{{ student.email }}" required>
+                    <input type="email" name="email" class="input" value="{{ student.email }}" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Contact *</label>
-                    <input type="text" name="contact" class="form-control" value="{{ student.contact }}" required>
+                    <input type="text" name="contact" class="input" value="{{ student.contact }}" required>
                 </div>
             </div>
+
         </div>
-        <div class="action-buttons">
+
+        <div class="flex" style="gap:12px; margin-top:20px;">
             <button type="submit" class="btn btn-primary">Update Student</button>
-            <a href="{% url 'allstudents' %}" class="btn btn-secondary">Cancel</a>
+            <a href="{% url 'allstudents' %}" class="btn btn-ghost">Cancel</a>
         </div>
+
     </form>
+
 </div>
+
 {% endblock %}

@@ -1,30 +1,90 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card"><div class="card-header"><h2 class="card-title">Edit Course</h2></div>
-<form method="post">{% csrf_token %}
-<div class="row">
-<div class="col-md-6"><div class="form-group"><label class="form-label">Department *</label>
-<input type="text" name="department" class="form-control" value="{{ course.department }}" required></div></div>
-<div class="col-md-6"><div class="form-group"><label class="form-label">Academic Year *</label>
-<input type="text" name="academicyear" class="form-control" value="{{ course.academicyear }}" required></div></div>
-<div class="col-md-6"><div class="form-group"><label class="form-label">Semester *</label>
-<input type="text" name="semester" class="form-control" value="{{ course.semester }}" required></div></div>
-<div class="col-md-6"><div class="form-group"><label class="form-label">Year *</label>
-<input type="number" name="year" class="form-control" value="{{ course.year }}" required></div></div>
-<div class="col-md-6"><div class="form-group"><label class="form-label">Course Code *</label>
-<input type="text" name="coursecode" class="form-control" value="{{ course.coursecode }}" required></div></div>
-<div class="col-md-6"><div class="form-group"><label class="form-label">Course Title *</label>
-<input type="text" name="coursetitle" class="form-control" value="{{ course.coursetitle }}" required></div></div>
-<div class="col-md-6"><div class="form-group"><label class="form-label">Credits</label>
-<input type="number" name="credits" class="form-control" value="{{ course.credits }}"></div></div>
-<div class="col-md-6"><div class="form-group"><label class="form-label">Instructor</label>
-<select name="instructor_id" class="form-control">
-<option value="">Select Instructor</option>
-{% for instructor in instructors %}
-<option value="{{ instructor.id }}" {% if course.instructor_id == instructor.id %}selected{% endif %}>{{ instructor.fullname }}</option>
-{% endfor %}</select></div></div>
+
+<div class="card">
+
+    <div class="card-header">
+        <h2 class="card-title">Edit Course</h2>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Department *</label>
+                    <input type="text" name="department" class="input" value="{{ course.department }}" required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Academic Year *</label>
+                    <input type="text" name="academicyear" class="input" value="{{ course.academicyear }}" required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Semester *</label>
+                    <input type="text" name="semester" class="input" value="{{ course.semester }}" required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Year *</label>
+                    <input type="number" name="year" class="input" value="{{ course.year }}" required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Course Code *</label>
+                    <input type="text" name="coursecode" class="input" value="{{ course.coursecode }}" required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Course Title *</label>
+                    <input type="text" name="coursetitle" class="input" value="{{ course.coursetitle }}" required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Credits</label>
+                    <input type="number" name="credits" class="input" value="{{ course.credits }}">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Instructor</label>
+                    <select name="instructor_id" class="input">
+                        <option value="">Select Instructor</option>
+                        {% for instructor in instructors %}
+                        <option value="{{ instructor.id }}"
+                            {% if course.instructor_id == instructor.id %}selected{% endif %}>
+                            {{ instructor.fullname }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="flex" style="gap:12px; margin-top:20px;">
+            <button type="submit" class="btn btn-primary">Update Course</button>
+            <a href="{% url 'allcourses' %}" class="btn btn-ghost">Cancel</a>
+        </div>
+
+    </form>
+
 </div>
-<div class="action-buttons">
-<button type="submit" class="btn btn-primary">Update Course</button>
-<a href="{% url 'allcourses' %}" class="btn btn-secondary">Cancel</a></div></form></div>
+
 {% endblock %}

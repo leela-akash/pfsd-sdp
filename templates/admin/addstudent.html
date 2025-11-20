@@ -1,29 +1,33 @@
 {% extends 'base.html' %}
-
 {% block content %}
+
 <div class="card">
     <div class="card-header">
         <h2 class="card-title">Add New Student</h2>
     </div>
+
     <form method="post">
         {% csrf_token %}
         <div class="row">
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Student ID *</label>
-                    <input type="number" name="studentid" class="form-control" required>
+                    <input type="number" name="studentid" class="input" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Full Name *</label>
-                    <input type="text" name="fullname" class="form-control" required>
+                    <input type="text" name="fullname" class="input" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Gender *</label>
-                    <select name="gender" class="form-control" required>
+                    <select name="gender" class="input" required>
                         <option value="">Select</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -31,53 +35,64 @@
                     </select>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Department *</label>
-                    <input type="text" name="department" class="form-control" required>
+                    <input type="text" name="department" class="input" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Program *</label>
-                    <input type="text" name="program" class="form-control" required>
+                    <input type="text" name="program" class="input" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Semester *</label>
-                    <input type="text" name="semester" class="form-control" required>
+                    <input type="text" name="semester" class="input" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Year *</label>
-                    <input type="number" name="year" class="form-control" required>
+                    <input type="number" name="year" class="input" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Email *</label>
-                    <input type="email" name="email" class="form-control" required>
+                    <input type="email" name="email" class="input" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Contact *</label>
-                    <input type="text" name="contact" class="form-control" required>
+                    <input type="text" name="contact" class="input" required>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" value="Akash">
+                    <input type="password" name="password" class="input" value="Akash">
                 </div>
             </div>
+
         </div>
-        <div class="action-buttons">
+
+        <div class="flex" style="gap: 12px; margin-top: 20px;">
             <button type="submit" class="btn btn-primary">Add Student</button>
-            <a href="{% url 'allstudents' %}" class="btn btn-secondary">Cancel</a>
+            <a href="{% url 'allstudents' %}" class="btn btn-ghost">Cancel</a>
         </div>
+
     </form>
 </div>
+
 {% endblock %}

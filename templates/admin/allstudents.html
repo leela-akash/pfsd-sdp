@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
-
 {% block content %}
+
 <div class="card">
+
     <div class="card-header">
         <h2 class="card-title">All Students</h2>
     </div>
-    <div style="margin-bottom: 20px;">
+
+    <div style="margin-bottom:20px;">
         <a href="{% url 'addstudent' %}" class="btn btn-primary">Add New Student</a>
     </div>
-    
+
     <div class="table-container">
         <table>
             <thead>
@@ -25,6 +27,7 @@
                     <th>Actions</th>
                 </tr>
             </thead>
+
             <tbody>
                 {% for student in students %}
                 <tr>
@@ -38,7 +41,7 @@
                     <td>{{ student.email }}</td>
                     <td>{{ student.contact }}</td>
                     <td>
-                        <a href="{% url 'editstudent' student.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{% url 'editstudent' student.id %}" class="btn btn-outline btn-sm">Edit</a>
                         <a href="{% url 'deletestudent' student.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
                     </td>
                 </tr>
@@ -48,7 +51,10 @@
                 </tr>
                 {% endfor %}
             </tbody>
+
         </table>
     </div>
+
 </div>
+
 {% endblock %}
